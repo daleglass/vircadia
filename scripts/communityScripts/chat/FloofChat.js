@@ -652,7 +652,7 @@ function setVisible(_visible) {
 function avatarJoinsDomain(sessionID) {
     Script.setTimeout(function () {
         var messageText = AvatarManager.getPalData([sessionID]).data[0].sessionDisplayName + " has joined."
-        var messageColor = { red: 122, green: 122, blue: 122 };
+        var messageColor = { red: 200, green: 200, blue: 200 };
         
         addToLog(messageText, "Notice", messageColor, "Domain");
         
