@@ -119,8 +119,8 @@ def main():
 
     if args.ci_build:
         logging.basicConfig(datefmt='%H:%M:%S', format='%(asctime)s %(guid)s %(message)s', level=logging.INFO)
+        logger.info('sha=%s' % headSha())
 
-    logger.info('sha=%s' % headSha())
     logger.info('start')
 
     # OS dependent information
