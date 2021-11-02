@@ -183,7 +183,7 @@ void AccountManager::setAuthURL(const QUrl& authURL) {
 
             qCDebug(networking) << "Found metaverse API account information for" << qPrintable(_authURL.toString());
         } else {
-            qCWarning(networking) << "Unable to load account file. No existing account settings will be loaded.";
+            qCWarning(networking) << "Unable to load account file" << accountsFile << ". No existing account settings will be loaded.";
         }
 
         if (_isAgent && !_accountInfo.getAccessToken().token.isEmpty() && !_accountInfo.hasProfile()) {
@@ -235,7 +235,7 @@ QNetworkRequest AccountManager::createRequest(QString path, AccountManagerAuth::
     } else {
         requestURL.setPath(getMetaverseServerURLPath(true) + path.left(queryStringLocation));
     }
-    
+
     // qCDebug(networking) << "Creating request path" << requestURL;
     // qCDebug(networking) << "requestURL.isValid()" << requestURL.isValid();
     // qCDebug(networking) << "requestURL.errorString()" << requestURL.errorString();
