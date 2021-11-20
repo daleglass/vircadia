@@ -24,6 +24,7 @@
 
 #include <QtCore/QOperatingSystemVersion>
 #include <glm/glm.hpp>
+#include "PathUtils.h"
 
 #ifdef Q_OS_WIN
 #include <windows.h>
@@ -190,7 +191,7 @@ void outputBits(unsigned char byte, QDebug* continuedDebug) {
         resultString.sprintf("[ %d (0x%x): ", byte, byte);
     }
     debug << qPrintable(resultString);
-    
+
     for (int i = 0; i < 8; i++) {
         resultString.sprintf("%d", byte >> (7 - i) & 1);
         debug << qPrintable(resultString);
@@ -738,7 +739,7 @@ QString formatSecTime(qint64 secs) {
 QString formatSecondsElapsed(float seconds) {
     QString result;
 
-    const float SECONDS_IN_DAY = 60.0f * 60.0f * 24.0f;        
+    const float SECONDS_IN_DAY = 60.0f * 60.0f * 24.0f;
     if (seconds > SECONDS_IN_DAY) {
         float days = floor(seconds / SECONDS_IN_DAY);
         float rest = seconds - (days * SECONDS_IN_DAY);
@@ -978,7 +979,7 @@ bool getProcessorInfo(ProcessorInfo& info) {
             break;
 
         case RelationCache:
-            // Cache data is in ptr->Cache, one CACHE_DESCRIPTOR structure for each cache. 
+            // Cache data is in ptr->Cache, one CACHE_DESCRIPTOR structure for each cache.
             Cache = &ptr->Cache;
             if (Cache->Level == 1) {
                 processorL1CacheCount++;
@@ -1029,7 +1030,7 @@ bool getProcessorInfo(ProcessorInfo& info) {
 
 
 const QString& getInterfaceSharedMemoryName() {
-    static const QString applicationName = "High Fidelity Interface - " + qgetenv("USERNAME");
+    static const QString applicationName = "High Fidelity Interface - " + qgetenv("USERNAME") + "(" + PathUtils::getInstanceName() + ")";
     return applicationName;
 }
 
