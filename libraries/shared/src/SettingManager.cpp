@@ -17,7 +17,14 @@
 
 #include "SettingInterface.h"
 
+#include "PathUtils.h"
+
 namespace Setting {
+
+
+    Manager::Manager(QObject *parent) : QObject(parent), _qSettings(PathUtils::getConfigFilePath("Interface_test"), QSettings::NativeFormat) {
+
+    }
 
     Manager::~Manager() {
         // Cleanup timer

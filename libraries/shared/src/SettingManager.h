@@ -27,6 +27,7 @@ namespace Setting {
         Q_OBJECT
 
     public:
+        Manager(QObject *parent = nullptr);
         void customDeleter() override;
 
         // thread-safe proxies into QSettings

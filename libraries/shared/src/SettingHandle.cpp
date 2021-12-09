@@ -12,6 +12,7 @@
 #include "SettingHandle.h"
 #include "SettingManager.h"
 
+#include "PathUtils.h"
 #include <math.h>
 
 
